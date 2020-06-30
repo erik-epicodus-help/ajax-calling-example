@@ -5,11 +5,13 @@ import './styles.css';
 
 $(document).ready(function () {
   $('#weatherLocation').click(function () {
-    const city = $('#location').val();
+    const name = $('#name').val();
     $('#location').val("");
 
     let request = new XMLHttpRequest();
-    const url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.API_KEY}`;
+    const url = `https://pokeapi.co/api/v2/pokemon/${name}`;
+
+    console.log(name)
 
     request.onreadystatechange = function () {
       if (this.readyState === 4 && this.status === 200) {
@@ -22,8 +24,12 @@ $(document).ready(function () {
     request.send();
 
     const getElements = function (response) {
-      $('.showHumidity').text(`The humidity in ${city} is ${response.main.humidity}%`);
-      $('.showTemp').text(`The temperature in Kelvins is ${response.main.temp} degrees.`);
+      $('.showName').text(`Say hello to ${response.species.name}!`);
+      $('.showSprite').html(`<img src=${response.sprites.front_default}></img>`);
+      $('.showHeight').text(`${response.species.name} is ${response.height} units tall!`);
+      $('.showType').text(`${response.species.name} is ${response.types[0].type.name} type!`);
+      $('.showFirstAbility').html(`${response.species.name} knows the move ${response.abilities[0].ability.name}`);
+
     }
   });
 });
