@@ -16,3 +16,11 @@
 
 // Postman can be as simple as you want it to be. You could do a "GET" request on wikipedia.com, and it would return something. Play around!
 
+// PROMISES to handle async code
+
+// Promise objects have three states
+// 1. Pending - The object's initial state. A pending operation ha sbeen started, but not completed. 
+// 2. Fulfilled - A promise is fulfilled when the operation has been successfully completed.
+// 3. Rejected -A promise is rejected is when the operation fails for some reason.
+
+
